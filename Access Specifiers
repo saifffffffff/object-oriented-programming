@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class clsPerson {
+
+public:
+	// accessible anywhere
+	string FirstName;
+	string LastName;
+	
+	string GetFullName() {
+		return LowerCase(FirstName) + " " + LowerCase(LastName);
+	}
+
+private:
+	// accessed by this class only
+	string FullName = FirstName + " " + LastName;
+	
+
+protected:
+	// accessed by the class and the classes which inherit from this class
+	short index;
+	string LowerCase(string word) {
+		for (index = 0; index < word.length(); index++)
+			word[index] = tolower(word[index]);
+		return word;
+	}
+
+
+
+};
+
+int main() {
+
+	clsPerson person;
+	
+	person.FirstName = "Saif";
+	person.LastName = "aldeen";
+	cout << person.GetFullName();
+
+
+	return 0;
+}
