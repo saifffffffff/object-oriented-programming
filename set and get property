@@ -1,0 +1,43 @@
+#include <vector>
+#include <iostream>
+#include <string>
+#include <fstream>
+#include "Mylib.h"
+
+using namespace std;
+
+class clsEmployee {
+
+
+private:
+	string _FirstName;
+	string _LastName;
+
+public:
+	void setFirstName(string FirstName) {
+		_FirstName = FirstName;
+	}
+	string getFirstName() {
+		return _FirstName;
+	}
+	void setLastName(string LastName) {
+		_LastName = LastName;
+	}
+	string getLastName() {
+		return _LastName;
+	}
+	
+
+};
+
+
+int main() {
+
+	clsEmployee emp1;
+	emp1.setFirstName("saif aldeen");
+	emp1.setLastName("abu hanieh");
+
+	cout << "first name is : " << emp1.getFirstName() << endl;
+	cout << "last name is : " << emp1.getLastName() << endl;
+	return 0;
+}
