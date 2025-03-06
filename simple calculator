@@ -1,0 +1,93 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+
+
+
+class clsCalculator {
+
+private:
+	double _Result = 0;
+	double _LastNumber = 0;
+	double _PreviousResult = 0;
+	string _LastOperation = "cancel";
+
+public:
+	void Add(double Number) {
+		_LastNumber = Number;
+		_PreviousResult = _Result;
+		_Result += _LastNumber;
+		_LastOperation = "Adding";
+	}
+
+	void Multiply(double Number){
+		_LastNumber = Number;
+		_PreviousResult = _Result;
+		_Result *= _LastNumber;
+		_LastOperation = "Multiplying";
+	}
+
+	void Subtract(double Number) {
+		_LastNumber = Number;
+		_PreviousResult = _Result;
+		_Result -= _LastNumber;
+		_LastOperation = "Subtracting";
+	}
+
+	void Divide(double Number) {
+		if (Number == 0)
+			Number = 1;
+		_LastNumber = Number;
+		_PreviousResult = _Result;
+		_Result /= _LastNumber;
+		_LastOperation = "Dividing";
+	}
+
+	void CancelLastOperation() {
+		_LastOperation = "cancling last operation";
+		_LastNumber = 0;
+		_Result = _PreviousResult;
+	}
+
+	void Clear() {
+		_Result = 0;
+	}
+
+	double GetResult() {
+		return _Result;
+	}
+
+	void PrintResult() {
+		cout << "Result After " << _LastOperation << " " << _LastNumber << " is : " << _Result << endl;
+	}
+
+};
+
+int main() {
+	clsCalculator calculator;
+	calculator.Add(10);
+	calculator.PrintResult();
+	
+	calculator.Subtract(100);
+	calculator.PrintResult();
+
+	calculator.Add(1000);
+	calculator.PrintResult();
+	
+	calculator.Multiply(10);
+	calculator.PrintResult();
+
+	calculator.CancelLastOperation();
+	calculator.PrintResult();
+
+	calculator.Divide(10);
+	calculator.PrintResult();
+
+	calculator.Clear();
+	calculator.Add(188);
+	calculator.PrintResult();
+	return 0;
+}
