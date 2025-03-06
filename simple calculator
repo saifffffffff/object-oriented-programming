@@ -14,7 +14,9 @@ private:
 	double _LastNumber = 0;
 	double _PreviousResult = 0;
 	string _LastOperation = "cancel";
-
+	bool _IsZero(double Number) {
+		return (Number == 0);
+	}
 public:
 	void Add(double Number) {
 		_LastNumber = Number;
@@ -38,7 +40,7 @@ public:
 	}
 
 	void Divide(double Number) {
-		if (Number == 0)
+		if (_IsZero(Number))
 			Number = 1;
 		_LastNumber = Number;
 		_PreviousResult = _Result;
