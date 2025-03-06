@@ -1,0 +1,57 @@
+#include <vector>
+#include <iostream>
+#include <string>
+#include <fstream>
+#include "Mylib.h"
+
+using namespace std;
+
+class clsEmployee {
+
+
+private:
+	string _FirstName;
+	string _LastName;
+	string _Id = Random::GenerateKey();
+
+public:
+	void setFirstName(string FirstName) {
+		_FirstName = FirstName;
+	}
+	string getFirstName() {
+		return _FirstName;
+	}
+
+
+	__declspec(property(get = getFirstName, put = setFirstName)) string FirstName;
+	
+	void setLastName(string LastName) {
+		_LastName = LastName;
+	}
+	string getLastName() {
+		return _LastName;
+	}
+
+	__declspec (property(get = getLastName, put = setLastName)) string LastName;
+	string getID() {
+		return _Id;
+	}
+
+	string GetFullName() {
+		return FirstName + " " + LastName;
+	}
+};
+
+
+int main() {
+
+	clsEmployee emp1;
+	emp1.FirstName= "saif aldeen";
+	emp1.LastName = "abu hanieh";
+
+	cout << "first name is : " << emp1.FirstName << endl;
+	cout << "last name is : " << emp1.LastName << endl;
+	cout << "full name is : " << emp1.GetFullName() << endl;
+	cout << "id : " << emp1.getID(); // read only property (you cant set the id ,but you can read it)
+	return 0;
+}
