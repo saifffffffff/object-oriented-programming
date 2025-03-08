@@ -1,0 +1,117 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+
+
+
+class clsAddress {
+	
+	
+private:
+
+	string _AddressLine1;
+	string _AddressLine2;
+	string _POBox;
+	string _ZipCode;
+
+public:
+	// parametarized constuctor
+	clsAddress(string AddressLine1, string AddressLine2, string POBox , string ZipCode) {
+		_AddressLine1 = AddressLine1;
+		_AddressLine2 = AddressLine2;
+		_POBox = POBox;
+		_ZipCode = ZipCode;
+	}
+	
+	// explicitly by the programmer ( we overloaded the old copy constructor funtion )
+	// copy constructor
+	/*
+	clsAddress(clsAddress & ObjectToCopy) {
+		cout << "Hi from the copy constructor\n";
+		_AddressLine1 = ObjectToCopy.getAddressLine1();
+		_AddressLine2 = ObjectToCopy.getAddressLine2();
+		_POBox = ObjectToCopy.getPOBox();
+		_ZipCode = ObjectToCopy.getZipCode();
+	}
+	*/
+
+	void Func(clsAddress object) {
+		//
+	}
+
+	void setAddressLine1(string AddressLine1) {
+		_AddressLine1 = AddressLine1;
+	}
+
+	string getAddressLine1() {
+		return _AddressLine1;
+	}
+	
+	void setAddressLine2(string AddressLine2) {
+		_AddressLine2 = AddressLine2;
+	}
+	
+	string getAddressLine2() {
+		return _AddressLine2;
+	}
+
+
+	void setPOBox(string POBox) {
+		_POBox = POBox;
+	}
+
+	string getPOBox() {
+		return _POBox;
+	}
+
+
+	void setZipCode(string ZipCode) {
+		_ZipCode = ZipCode;
+	}
+
+	string getZipCode() {
+		return _ZipCode;
+	}
+
+	
+	void PrintAddress() {
+		cout << " - - - - - - - - Address - - - - - - - - \n";
+		cout << "Address line 1 : " << _AddressLine1 << endl;
+		cout << "Address line 2 : " << _AddressLine2 << endl;
+		cout << "POBox : " << _POBox << endl;
+		cout << "ZipCode : " << _ZipCode << endl;
+		cout << " - - - - - - - - - - - - - - - - - - - - \n";
+	}
+
+};
+
+
+int main() {	
+	
+    clsAddress address1("shuhadaa al harem street", "Building 101A", "12223", "6854");
+	
+	address1.PrintAddress();
+	
+	
+	// implicitly by the compiler
+	
+	clsAddress address2 = address1;
+	address2.PrintAddress();
+	
+	// or 
+	
+	clsAddress address3(address1);
+	address3.PrintAddress();
+
+	
+
+	return 0;
+}
+
+
+
+	
+	
