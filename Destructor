@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+
+
+
+
+class clsPerson {
+private:
+	string * _name = new string;
+	int* _age = new int;
+public:
+	
+	clsPerson(string name,int age) {
+		*_name = name;
+		*_age = age;
+		cout << "Hi Im Constructor" << endl;
+	}
+	
+	// Destructor
+	~clsPerson() {
+		delete _name;
+		delete _age;
+		cout << "Hi Im Destructor" << endl;
+	}
+
+	string GetName() {
+		return *_name;
+	}
+
+};
+
+
+void func() {
+	cout << "From functions" << endl;
+	// the constructor didnt delete the objects made by dynamically memory allocation
+	clsPerson* Person = new clsPerson("ahmad" , 18);
+	
+	// you have to delete it 
+	delete Person;
+}
+
+
+int main() {	
+	
+	clsPerson person("saif", 18);
+	
+	cout << "Person name is " << person.GetName() << endl;
+	
+	func();
+	return 0;
+}
+
