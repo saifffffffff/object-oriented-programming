@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class clsPerson {
+private:
+	string _name;
+	short _age;
+
+public:
+	// declared in the class
+	static short NumberOfPeople;
+	
+	clsPerson(string name, short age) {
+		_name = name;
+		_age = age;
+		NumberOfPeople += 1;
+	}
+
+	void PrintInfo() {
+		cout << "- - - - - - - - - - -" << endl;
+		cout << "name : " << _name << endl;
+		cout << "age : " << _age << endl;
+		cout << "- - - - - - - - - - -" << endl;
+	}
+
+
+	short GetNumberOfPeople() {
+		return NumberOfPeople;
+	}
+};
+
+// defined outside the class ( static variables might be private or public )
+short clsPerson::NumberOfPeople = 0;
+
+int main() {	
+	
+	clsPerson person1("saif", 18), person2("tala" , 15) , person3("rami" , 13);
+	cout << person1.GetNumberOfPeople() << endl;
+	person2.NumberOfPeople = 100;
+	cout << person3.GetNumberOfPeople();
+	return 0;
+}
