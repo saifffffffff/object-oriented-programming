@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+
+
+
+
+class clsPerson {
+private:
+	string _name;
+	short _age;
+public:
+	
+	static void GreetPerson() {
+		cout << "Hello person " << endl;
+	}
+	
+	clsPerson(string name, short age) {
+		_name = name;
+		_age = age;
+	}
+
+	void PrintInfo() {
+		cout << "- - - - - - - - - - -" << endl;
+		cout << "name : " << _name << endl;
+		cout << "age : " << _age << endl;
+		cout << "- - - - - - - - - - -" << endl;
+	}
+
+
+	
+};
+
+
+int main() {	
+	
+	clsPerson person1("saif", 18), person2("tala" , 15) , person3("rami" , 13);
+	
+	// called through the class
+	clsPerson::GreetPerson();
+	// called through the object
+	person1.GreetPerson();
+	
+	return 0;
+}
