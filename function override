@@ -153,8 +153,12 @@ int main() {
 	
 	clsEmployee emp("A901", "saif", "aldeen", "saifps2006@gmail.com", "Ceo", 12000, "Microsoft", "0790158089");
 
+
+
 	emp.Print();
-	
+	cout << endl << endl;
+	// you can access the old function by the base class
+	emp.clsPerson::Print();
 	
 	return 0;
 }
