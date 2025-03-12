@@ -1,0 +1,78 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+
+
+
+
+class clsA {
+
+private:
+	int VarA1;
+	void FuncA1() {
+		cout << "Hello from class A , function 1 is called" << endl;
+	}
+
+protected:
+	int VarA2;
+	void FuncA2() {
+		cout << "Hello from class A , functions 2 is called" << endl;
+	}
+public:
+	int VarA3;
+	void FuncA3() {
+		cout << "Hello from class A , functions 2 is called" << endl;
+	}
+};
+
+
+class clsB : public clsA {
+	
+public:
+	void FuncB() {
+	
+		VarA2; // protected
+		VarA3; // public
+
+		FuncA2(); // protected
+		FuncA3(); // public
+		
+		/*
+		
+		you can use this method to access supers class members
+		
+		clsA::VarA2; // protected
+		clsA::VarA3; // public
+	
+		clsA::FuncA2(); // protected
+		clsA::FuncA3(); // public
+		
+		*/
+		
+		/*
+		
+			The :: operator in C++ is called the scope resolution operator. It is used for the following purposes
+			1 - Accessing global variables/functions ::x
+			2 - Accessing class members explicitly ( protected and public members )
+			3 - Accessing namespaces std::cout
+		
+		*/
+	}
+
+
+};
+
+int main() {
+	
+
+	clsB B;
+	// you can only access the public members from both base and derived class 
+	B.FuncA3();
+	B.FuncB();
+	B.VarA3;
+	// so the protected members acts as public members in the derived classes and as a private members in objects
+	return 0;
+}
