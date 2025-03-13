@@ -1,0 +1,78 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+
+
+
+class clsPerson {
+private:
+	string _name;
+	short _age;
+public:
+	clsPerson(string name, short age) {
+		_name = name;
+		_age = age;
+	}
+	
+	void Print() {
+		cout << "name : " << _name << endl;
+		cout << "age : " << _age << endl;
+	}
+
+	string GetName() {
+		return _name;
+	}
+
+	short GetAge() {
+		return _age;
+	}
+
+};
+
+class clsEmployee : public clsPerson {
+
+private:
+	float _salary;
+public:
+	
+	clsEmployee(string name, short age, float salary) : clsPerson( name, age) {
+		_salary = salary;
+	}
+
+	void Print() {
+		clsPerson::Print();
+		cout << "salary : " << _salary << endl;
+	}
+	
+	float GetSalary() {
+		return _salary;
+	}
+};
+
+int main() {
+	
+	clsPerson person("saif", 18);
+
+	clsEmployee emp("saif", 18, 2000);
+
+	// Up castring ( child -> base )
+	clsPerson* ptrPerson = &emp;
+
+
+	// Down castring ( you are trying to convert person into employee )
+	// base - > child
+	// clsEmployee* ptrEmployee = &person;
+
+
+	
+
+	
+	
+	
+
+
+	return 0;
+}
