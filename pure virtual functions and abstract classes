@@ -1,0 +1,93 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+// abstract class
+class Character {
+
+protected:
+	string _name;
+	short _age;
+	short _level;
+	double _health;
+	double _damage;
+	
+public:
+	Character(string name, short age, short level)
+	{
+		_name = name;
+		_age = age;
+		_level = level;
+		
+	}
+	
+	// pure virtual function 
+	virtual void Attack() = 0;
+	virtual void Damaged() = 0;
+	
+};
+
+class Archar : public Character {
+
+
+public:
+	
+	Archar(string name, short age, short level) : Character(name, age, level) {
+		_damage = 15;
+		_health = 100;
+	}
+
+	void Attack() {
+		cout << "Arrow Thrown !!" << endl;
+	}
+	void Damaged() {
+		_health -= 10;
+	}
+};
+
+
+// interface class
+class clsPhone {
+
+public:
+	virtual void TurnOnPhone() = 0;
+	virtual void TurnOffPhone() = 0;
+	virtual void ConnectNetwork() = 0;
+	virtual void TakePhoto() = 0;
+	virtual void SendSMS(string phoneNumber, string Text) = 0;
+	virtual string GetIpAddress() = 0;
+
+};
+
+class clsSamsung : public clsPhone {
+private :
+	string _ipAddress;
+	string _Model;
+public:
+	clsSamsung(string ip, string Model) {
+		_ipAddress = ip;
+		_Model = Model;
+	}
+	void TurnOnPhone() { cout << "Phone turned on." << endl; }
+	void TurnOffPhone() { cout << "Phone turned off." << endl; }
+	void ConnectNetwork() { cout << "Network connected." << endl; }
+	void TakePhoto() { cout << "Photo takes." << endl; }
+	void SendSMS(string phoneNumber, string Text) {cout << "Send message to " << phoneNumber << " : " << Text << endl;}
+	string GetIpAddress() { return _ipAddress; }
+	
+	string GetModel() { return _Model; }
+};
+
+int main() {
+
+	// cant declate clsPhone or clsCharacter because they are abstract classes
+	
+	Archar archar1("saif", 18, 12);
+	archar1.Attack();
+	
+	clsSamsung samsung("1111.1123.11.91", "samsung note 10");
+
+	return 0;
+}
