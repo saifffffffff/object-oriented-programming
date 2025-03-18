@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+class A {
+private:
+	int _var1;
+public:
+	int var2;
+	A() {
+		_var1 = 10;
+		var2 = 20;
+	}
+	friend class B;
+};
+
+class B {
+
+
+
+public:
+	void Display(A a) {
+		cout << "class A var 1 : " << a._var1 << endl;
+		cout << "class A var 2 : " << a.var2 << endl; // you can access the private members because class B is the friend of class A
+	}
+};
+
+int main() {
+	A a;
+	B b;
+	b.Display(a);
+	return 0;
+}
