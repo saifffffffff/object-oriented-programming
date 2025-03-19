@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+class A {
+private:
+	int _Var1;
+protected :
+	int _Var2;
+public :
+	int Var3;
+
+	A() {
+		_Var1 = 10;
+		_Var2 = 20;
+		Var3 = 30;
+	}
+	friend int Sum(A);
+	
+};
+
+
+
+int Sum(A a) {
+	return a._Var1 + a._Var2 + a.Var3;
+}
+
+int main() {
+
+	A a;
+	cout << "Sum of variables in class A is : " << Sum(a) << endl;
+
+	return 0;
+}
