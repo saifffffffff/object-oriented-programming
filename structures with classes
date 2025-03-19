@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+class clsPerson {
+
+
+private:
+	struct DateOfBirth {
+		short year;
+		short month;
+		short day;
+	};
+	DateOfBirth _date;
+	string _name;
+
+public:
+
+	clsPerson(string name, short yearOfBirth, short monthOfBirth, short dayOfBirth) {
+		_date.day = dayOfBirth;
+		_date.month = monthOfBirth;
+		_date.year = yearOfBirth;
+		_name = name;
+	}
+
+	string GetDateOfBirth() {
+		return to_string(_date.year) + "/" + to_string(_date.month) + "/" + to_string(_date.day);
+	}
+	string GetName() {
+		return _name;
+	}
+	void SetDateOfBirth(short yearOfBirth, short monthOfBirth, short dayOfBirth) {
+		_date.day = dayOfBirth;
+		_date.month = monthOfBirth;
+		_date.year = yearOfBirth;
+	}
+	void SetName(string name) {
+		_name = name;
+	}
+	void PrintInfo() {
+		cout << "Name : " << _name << endl;
+		cout << "Date : " << GetDateOfBirth() << endl;
+	}
+
+
+
+};
+
+
+int main() {
+
+	clsPerson person("saif aldeen",2006, 8,17);
+	person.PrintInfo();
+	return 0;
+}
