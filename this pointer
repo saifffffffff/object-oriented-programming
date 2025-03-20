@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+
+class clsPerson {
+
+public:
+	string ID;
+	string Name;
+	short Age;
+	clsPerson(string ID, string Name, short Age) {
+		/*
+		the compiler will fill the members with rabish data
+		Name = Name;
+		ID = ID;
+		Age = Age
+		*/
+
+		// right way
+		this->Age = Age;
+		this->Name = Name;
+		this->ID = ID;
+	}
+
+	void Print() {
+		// cout << "name : " << Name << " age : " << Age << " ID " << ID << endl;
+		// the compiler implicitly convert it into
+		cout << "name : " << this->Name << " age : " << this->Age << " ID " << this->ID << endl;
+	}
+
+	static void DrawCard(clsPerson person) {
+		cout << "- - - - - - - - - - - - - - - - - - - -" << endl;
+		person.Print();
+		cout << "- - - - - - - - - - - - - - - - - - - -" << endl;
+	}
+
+	void DisplayPersonCard() {
+		DrawCard(*this); // you passed the value of the current object from inside the class
+	}
+};
+
+
+
+int main() {
+	clsPerson Person("A100", "saif aldeen", 18);
+	Person.DisplayPersonCard();
+	
+	return 0;
+}
