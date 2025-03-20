@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+
+class clsNumber {
+private:
+	int _Number;
+public:
+	// defualt constructor
+	clsNumber() {}
+
+	clsNumber(int Number) {
+		this->_Number = Number;
+	}
+	void PrintNumber() {
+		cout << "Number : " << this->_Number << endl;
+	}
+
+};
+
+
+int main() {
+	cout << "How Many Numbers : ";
+	short NumberOfNumbers;
+	cin >> NumberOfNumbers;
+	// when you define a dynamic array of objects you have to add explicitly a default constructor if you have a parametarized constructor to remove the error
+	// because we want to initiate the object before using the parametarized constructor
+	clsNumber * ArrayOfNumbers = new clsNumber[NumberOfNumbers];
+
+	for (int i = 0; i < NumberOfNumbers; i++) {
+		clsNumber Number(i + 1);
+		ArrayOfNumbers[i] = Number;
+	}
+	
+	for (int i = 0; i < NumberOfNumbers; i++) {
+		ArrayOfNumbers[i].PrintNumber();
+	}
+	return 0;
+}
