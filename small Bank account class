@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+class clsBankAccount {
+public:
+	enum enTransactionType {Deposit = 1 , WithDraw = -1};
+
+private:
+	double _balance;
+	
+	class clsTransaction{
+	private :
+		double _Amount;
+		enTransactionType _TransType;
+	public:
+		clsTransaction(double Amount, enTransactionType TransType) {
+			_Amount = Amount;
+			_TransType = TransType;
+		}
+		
+		void ApplyTransaction(clsBankAccount & BankAccount) {
+			BankAccount._balance += (_Amount * _TransType);
+		
+		}
+	
+	};
+
+public:
+	clsBankAccount(double balance) {
+		_balance = balance;
+	}
+	void PerformTransaction(double Amount ,enTransactionType TransactionType ) {
+		clsTransaction Transaction(Amount, TransactionType);
+		Transaction.ApplyTransaction(*this);
+	}
+	void ShowBalance() {
+		cout << "Current Balance : " << _balance << endl;
+	}
+};
+
+int main() {
+
+	clsBankAccount BankAccout(5000);
+	BankAccout.ShowBalance();
+	BankAccout.PerformTransaction(300, clsBankAccount::enTransactionType::Deposit);
+	BankAccout.ShowBalance();
+	BankAccout.PerformTransaction(700, clsBankAccount::enTransactionType::WithDraw);
+	BankAccout.ShowBalance();
+	return 0;
+}
