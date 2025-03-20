@@ -1,0 +1,83 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+class clsPerson {
+
+
+private:
+	string _name;
+	
+public:
+
+	class clsAddress {
+
+	private:
+		string _AddressLine1;
+		string _AddressLine2;
+		string _City;
+		string _Country;
+	public:
+		clsAddress(){}
+		clsAddress(string AddressLine1, string AddressLine2, string city, string country) {
+			_AddressLine1 = AddressLine1;
+			_AddressLine2 = AddressLine2;
+			_City = city;
+			_Country = country;
+		}
+		void Print() {
+			cout << "Address Line 1 : " << _AddressLine1 << endl;
+			cout << "Address Line 2 : " << _AddressLine2 << endl;
+			cout << "City           : " << _City << endl;
+			cout << "Country        : " << _Country << endl;
+		}
+		string GetAddressLine1() {
+			return _AddressLine1;
+		}
+		string GetAddressLine2() {
+			return _AddressLine2;
+		}
+		string GetCity() {
+			return _City;
+		}
+		string GetCountry() {
+			return _Country;
+		}
+
+	};
+	clsAddress address;
+	
+	clsPerson(string name, string AddressLine1, string AddressLine2, string city, string country) : address(AddressLine1, AddressLine2, city, country) {
+		_name = name;
+	}
+
+	string GetName() {
+		return _name;
+	}
+	void SetName(string name) {
+		_name = name;
+	}
+	void PrintInfo() {
+		cout << "Name : " << _name << endl;
+		cout << "Address : " << endl;
+		
+	}
+
+
+
+};
+
+
+int main() {
+
+	clsPerson person("saif aldeen","shuhada", "seventh circl", "amman", "jordan");
+	person.address.Print();
+	
+	// you can define the inner class explicitly
+	clsPerson::clsAddress address1("street 1", "street 2", "amman", "jordan");
+	cout << "- - - - - - - - - - - - - -" << endl;
+	address1.Print();
+	return 0;
+}
