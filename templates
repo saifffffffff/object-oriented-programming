@@ -1,0 +1,97 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+template <typename Type> void Swap(Type & a, Type &  b) {
+	Type temp = a;
+	a = b;
+	b = temp;
+}
+
+template <typename T >  bool IsNumberBetween(T num, T From, T To) {
+	return (num >= From) && (num <= To);
+}
+
+template <typename T>  T ReadNumber(string message, string AlertMessage = "") {
+	T num;
+	cout << message;
+	cin >> num;
+	while (cin.fail()) {
+		cin.clear();
+		cout << AlertMessage;
+		cin.ignore(INT_MAX, '\n');
+		cin >> num;
+	}
+	return num;
+}
+
+template <typename T> T ReadNumberInRange(T From, T To, string message, string OutOfRangeMessage = "", string InvalidInputMessage = "") {
+
+	T num;
+	cout << message;
+	cin >> num;
+	while (num > To || num < From || cin.fail()) {
+
+		if (cin.fail())
+			cout << InvalidInputMessage;
+		else
+			cout << OutOfRangeMessage;
+
+		cin.clear();
+		cin.ignore(INT_MAX, '\n');
+		cin >> num;
+	}
+	return num;
+
+
+
+}
+
+template <class T> class Calculator {
+private:
+	T _num1, _num2;
+public:
+	Calculator(T number1, T number2) {
+		_num1 = number1;
+		_num2 = number2;
+	}
+
+	T Add() { return _num1 + _num2;}
+	T Subtract() { return _num1 - _num2;}
+	T Multiply() { return _num1 * _num2;}
+	T Division() { return _num1 / _num2; }
+
+};
+
+
+int main()
+{
+	int a = clsInputValidate::ReadNumberInRange<int>(1,10,"a : ");
+	int b = clsInputValidate::ReadNumberInRange<int>(1,10,"b : ");
+	
+	cout << "\nBefore swapping a = " << a << " b = " << b << endl;
+	Swap<int>(a, b);
+	cout << "After swapping a = " << a << " b = " << b << endl << endl;
+	
+	Calculator <int> IntCal(12, 14);
+	cout << "Numbers : 12 , 14 " << endl;
+	cout << "Adding int : " << IntCal.Add() << endl;
+	cout << "Subtracting int : " << IntCal.Subtract() << endl;
+	cout << "Multiplying int : " << IntCal.Multiply() << endl;
+	cout << "division int : " << IntCal.Division() << endl << endl;
+
+	Calculator <float> FloatCal(12.23, 14.42);
+	cout << "Numbers : 12.23 , 14,42" << endl;
+	cout << "Adding Float : " << FloatCal.Add() << endl;
+	cout << "Subtracting Float : " << FloatCal.Subtract() << endl;
+	cout << "Multiplying Float : " << FloatCal.Multiply() << endl;
+	cout << "division Float : " << FloatCal.Division() << endl << endl;
+
+	Calculator <string> StringCal("saif", "rami");
+	cout << "Strings : saif , rami" << endl;
+	cout << "Adding Strings : " << StringCal.Add() << endl;
+	
+	return 0;
+
+}
